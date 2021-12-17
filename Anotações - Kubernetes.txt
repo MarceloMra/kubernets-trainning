@@ -1,0 +1,50 @@
+Iniciar o minikube:
+minikube start --vm-driver=docker
+
+Consultar instâncias ativas(pods/services/deployments/replicasets etc):
+kubectl get <component>
+
+Consultar versão do kubernets:
+kubectl version
+
+Criar deployment:
+kubectl create deployment <deployment_name> --image=<imagename>
+
+Mostra mais informações sobre um componente:
+kubectl describe <component> <component_name>
+
+Mostra os logs de um pod:
+kubectl logs <pod_name>
+
+Entrar no terminal de um pod/conteiner:
+kubectl exec -it <pod_name> -- bin/bash
+
+Deletar um componente:
+kubectl delete <component> <name>
+
+Editar um component:
+kubectl edit <component> <name>
+
+Aplicar um arquivo de configuração:
+kubectl apply -f <file_name>
+
+Criar arquivo de config via terminal:
+wsl touch <filename>.<format>
+
+Para atribuir um ip externo pelo minikube a um service externo:
+minikube service <service_name>
+
+OBS:
+- minikube vai ser usado quando for necessário inicializar ou deletar o cluster, já o kubectl já ser utilizado para configurar o cluster criado no pelo minikube
+- deployment possui a blueprint para criação dos pods(a "receita")
+- entre o deployment e o pod existe uma camada chamada replicaSet
+- Deployment gerencia o replicaset, que por sua vez, gerencia os pods, que são uma abstração de um container
+- Qualquer componente abaixo do deployment é gerenciado pelo kubernets
+- Ao invés de passar todos os parametros de um deploy via command line, é aconselhável utilizar o comando kubectl apply para aplicar um arquivo de configuração
+- Para tornar um service capaz de receber chamadas externas é necessário adicionar type: LoadBalancer dentro de spec:    |  Com minikube é necessário forçar a atribuição deo ip externo
+
+Pré-requisitos:
+- wsl
+- docker instalado
+- kubectl
+- minikube(para conseguir testar localmente)
