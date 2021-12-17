@@ -42,6 +42,7 @@ OBS:
 - Qualquer componente abaixo do deployment é gerenciado pelo kubernets
 - Ao invés de passar todos os parametros de um deploy via command line, é aconselhável utilizar o comando kubectl apply para aplicar um arquivo de configuração
 - Para tornar um service capaz de receber chamadas externas é necessário adicionar type: LoadBalancer dentro de spec:    |  Com minikube é necessário forçar a atribuição deo ip externo
+- Dados(senhas/usuários) em um Secret precisam estar encodados em base64
 
 Pré-requisitos:
 - wsl

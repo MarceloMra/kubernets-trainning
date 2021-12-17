@@ -19,3 +19,28 @@ spec:
         image: nginx:1.20.2
         ports:
         - containerPort: 80
+        env:
+        - name: NGINX_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: nginx-configmap
+              key: nginx_host
+        - name: NGINX_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: nginx-configmap
+              key: nginx_port
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
+      nodePort: 30001
