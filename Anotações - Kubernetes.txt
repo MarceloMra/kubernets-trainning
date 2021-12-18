@@ -34,6 +34,9 @@ wsl touch <filename>.<format>
 Para atribuir um ip externo pelo minikube a um service externo:
 minikube service <service_name>
 
+Para mudar de namespace
+kubens <namespace_name>
+
 OBS:
 - minikube vai ser usado quando for necessário inicializar ou deletar o cluster, já o kubectl já ser utilizado para configurar o cluster criado no pelo minikube
 - deployment possui a blueprint para criação dos pods(a "receita")
@@ -43,6 +46,8 @@ OBS:
 - Ao invés de passar todos os parametros de um deploy via command line, é aconselhável utilizar o comando kubectl apply para aplicar um arquivo de configuração
 - Para tornar um service capaz de receber chamadas externas é necessário adicionar type: LoadBalancer dentro de spec:    |  Com minikube é necessário forçar a atribuição deo ip externo
 - Dados(senhas/usuários) em um Secret precisam estar encodados em base64
+- Utilizar o kubens para manter setado um namespace, caso necessário, evitando sempre precisar informar o namespace de um componente ao utilizar o kubectl get
+- utilizar -n no comando minikube service para especificar o namespace
 
 Pré-requisitos:
 - wsl

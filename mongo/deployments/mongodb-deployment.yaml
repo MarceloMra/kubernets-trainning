@@ -4,6 +4,7 @@ metadata:
   name: mongodb-deployment
   labels:
     app: mongodb
+  namespace: mongo-app-trainning-namespace
 spec:
   replicas: 1
   selector:
@@ -13,6 +14,7 @@ spec:
     metadata:
       labels:
         app: mongodb
+      namespace: mongo-app-trainning-namespace
     spec:
       containers:
       - name: mongodb
@@ -35,6 +37,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongodb-service
+  namespace: mongo-app-trainning-namespace
 spec:
   selector:
     app: mongodb
